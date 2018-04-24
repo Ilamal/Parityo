@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
 import './App.css';
-let iter = 15;
+import Title from './Components/Title'
+
 class App extends Component {
   constructor(){
     super();
+    this.state = {weather: "sunny"};
   }
 
   render() {
     return (
       
       <div className="App">
-  
-        <h1>Weather App</h1>  
- 
+
+        <Title />
+        {this.state};
       </div>  
     );
   }
