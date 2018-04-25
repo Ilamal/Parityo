@@ -7,15 +7,21 @@ let kaupunki = 'q=Kuopio,fi';
 let unit = '&units=metric';
 const appid = '&appid=2f8b3222fce8d6f1b7fd7dff59724227'; 
 let wholeurl = baseUrl + '?' + kaupunki + unit + appid ;
-let httpreq = new XMLHttpRequest();
+
 var self;
 class App extends Component {
   
   constructor(){
     super();
 
-    this.state = {temp: 0};
-    self = this;
+    this.state = {temp: "Click callApi"};
+    self = this;          
+}
+  update
+  callApi(){
+    let httpreq = new XMLHttpRequest();
+    httpreq.open('GET', wholeurl, true);
+    httpreq.send();
     httpreq.onreadystatechange = (function(){
       try{
         let tulos = JSON.parse(this.responseText);
@@ -26,14 +32,6 @@ class App extends Component {
 
       }
     });
-    
-    
-}
-  update
-  callApi(){
-    httpreq.open('GET', wholeurl, true);
-    httpreq.send();
-   
   }
 
   render() {
@@ -45,6 +43,7 @@ class App extends Component {
         <button onClick={this.callApi} >
           callApi
         </button>
+        The temp is:
         {this.state.temp}
       </div>  
     );
