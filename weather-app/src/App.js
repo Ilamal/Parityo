@@ -1,31 +1,26 @@
 import React, { Component } from 'react';
 import './App.css';
 import Title from './Components/Title'
-const key = 'd2ba5995-a38e-4800-9fae-19c4fc2c6907'
+const key = '21a4b6e72379e58cb6cb2c11409903d6'
 var XMLParser = require('react-xml-parser');
 let place = "kuopio";
-var baseUrl = 'http://api.openweathermap.org/data/2.5/forecast/';
+var baseUrl = 'http://api.openweathermap.org/data/2.5/weather/';
 var kaupunki = 'q=Kuopio,fi';
 var unit = '&units=metric';
-var appid = '&appid=681fb05c8a442daf7087d168adc747c4'; // sjuva
+var appid = '&appid=2f8b3222fce8d6f1b7fd7dff59724227'; 
 var wholeurl = baseUrl + '?' + kaupunki + appid + unit ;
 class App extends Component {
-  selaaJaNayta (xmlDoku){
-    
-  }
+
   constructor(){
     super();
-    var SERVER_URL = "http://data.fmi.fi/fmi-apikey/"+key+"/wfs?request=getFeature&storedquery_id=fmi:"
-    +":forecast::hirlam::surface::point::multipointcoverage&place="+place;
-    var STORED_QUERY_OBSERVATION = "fmi::observations::weather::multipointcoverage";
-    // Connection was properly initialized. So, get the data.
     var httpreq = new XMLHttpRequest();
     httpreq.onreadystatechange = (function (){
-      let tulos = new XMLParser().parseFromString(httpreq.responseText);
+   //   let tulos = JSON.parse(httpreq.responseText);
+    let tulos = httpreq.responseText;
       console.log(tulos);
     }
     );
-  httpreq.open('GET', SERVER_URL, true);
+  httpreq.open('GET', wholeurl, true);
   httpreq.send();
 }
  
