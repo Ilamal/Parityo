@@ -4,7 +4,7 @@ export default class Title extends Component {
 
   render() {
     return (
-        <h1>Weather-app to go!</h1>
+        <h1>Weather-app for Finnish cities!</h1>
     );
   }
 }

@@ -1,37 +1,59 @@
 import React, { Component } from 'react';
 import './App.css';
-import Title from './Components/Title'
+import Title from './Components/Title';
+import Weather from './Components/Weather';
+import Form from './Components/Form';
 
 let baseUrl = 'http://api.openweathermap.org/data/2.5/weather';
-let kaupunki = 'q=Kuopio,fi';
+let kaupunki = 'Kuopio';
 let unit = '&units=metric';
 const appid = '&appid=2f8b3222fce8d6f1b7fd7dff59724227'; 
-let wholeurl = baseUrl + '?' + kaupunki + unit + appid ;
+let wholeurl = baseUrl + '?q=' + kaupunki +',fi'+ unit + appid ;
 
-var self;
-class App extends Component {
+class App extends React.Component {
   
   constructor(){
     super();
 
-    this.state = {temp: "Click callApi"};
-    self = this;          
+    this.state = {
+      city: undefined,
+      temp: undefined,
+      conditions: undefined       
+    };
+    this.callApiFirst();
+    
 }
-  update
-  callApi(){
-    let httpreq = new XMLHttpRequest();
-    httpreq.open('GET', wholeurl, true);
-    httpreq.send();
-    httpreq.onreadystatechange = (function(){
-      try{
-        let tulos = JSON.parse(this.responseText);
-        console.log(tulos.main.temp);
-        self.setState({temp: tulos.main.temp});
-      //  this.state = {temp: {temp}};
-      } catch(Exception){
+callApiFirst = async () => {    
 
-      }
-    });
+  let apiCall = await fetch(wholeurl);
+  let data = await apiCall.json();
+  console.log(data);
+  this.setState({
+    city: data.name,
+    temp: data.main.temp,
+    conditions: data.weather[0].description
+  })             
+}
+  callApi = async (e) => {
+    e.preventDefault();
+    wholeurl = baseUrl + '?q=' + e.target.elements.city.value +',fi'+ unit + appid;      
+
+    let apiCall = await fetch(wholeurl);
+    let data = await apiCall.json();
+    console.log(data);
+    try{
+    this.setState({
+      city: data.name,
+      temp: data.main.temp,
+      conditions: data.weather[0].description
+    })  
+  } catch(ex){
+    this.setState({
+      city: undefined,
+      temp: undefined,
+      conditions: undefined
+    })
+  }           
   }
 
   render() {
@@ -40,11 +62,14 @@ class App extends Component {
       
       <div className="App">
         <Title />
-        <button onClick={this.callApi} >
-          callApi
-        </button>
-        The temp is:
-        {this.state.temp}
+        <Form 
+          callApi = {this.callApi}
+        />
+        <Weather 
+          city={this.state.city}
+          temp={this.state.temp}
+          conditions={this.state.conditions}
+        />
       </div>  
     );
   }

@@ -1,0 +1,27 @@
+p {
+    font-size: 35px;
+}
+input[type=text] {
+    background-color: cyan;
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    height: 25px;
+}
+button{
+    height: 28px;
+}
+form {
+    align-self: auto;
+}
+body {
+    background-color: rgb(57, 87, 121);
+    background-image: './weather-icons.png';
+}
+
+div {
+    max-width: 700px;
+    width: 100%;
+    margin: 0 auto;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
