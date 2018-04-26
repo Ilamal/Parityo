@@ -15,7 +15,6 @@ form {
 }
 body {
     background-color: rgb(57, 87, 121);
-    background-image: './weather-icons.png';
 }
 
 div {
@@ -24,4 +23,7 @@ div {
     margin: 0 auto;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
+}
+img {
+    align-content: bottom;
 }

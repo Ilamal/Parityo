@@ -18,7 +18,8 @@ class App extends React.Component {
     this.state = {
       city: undefined,
       temp: undefined,
-      conditions: undefined       
+      conditions: undefined,   
+      icon: undefined    
     };
     this.callApiFirst();
     
@@ -31,7 +32,8 @@ callApiFirst = async () => {
   this.setState({
     city: data.name,
     temp: data.main.temp,
-    conditions: data.weather[0].description
+    conditions: data.weather[0].description,
+    icon: data.weather[0].icon
   })             
 }
   callApi = async (e) => {
@@ -45,13 +47,15 @@ callApiFirst = async () => {
     this.setState({
       city: data.name,
       temp: data.main.temp,
-      conditions: data.weather[0].description
+      conditions: data.weather[0].description,
+      icon: data.weather[0].icon
     })  
   } catch(ex){
     this.setState({
       city: undefined,
       temp: undefined,
-      conditions: undefined
+      conditions: undefined,
+      icon: undefined
     })
   }           
   }
@@ -69,6 +73,7 @@ callApiFirst = async () => {
           city={this.state.city}
           temp={this.state.temp}
           conditions={this.state.conditions}
+          icon={this.state.icon}
         />
       </div>  
     );
