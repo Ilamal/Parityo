@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
 
 class Weather extends Component {
-  
+
   render() {
     return (
-        <div>
-            {this.props.city && <p>The city is:  {this.props.city}</p>}
-            {this.props.temp && <p>The temperature is:  {this.props.temp} Celsius</p>}
-            {this.props.conditions && this.props.icon && <p>The conditions are:  {this.props.conditions} 
-            <img src={'http://openweathermap.org/img/w/'+this.props.icon+'.png'}alt="" height="48" width="48"/></p>}
-            {this.props.city===undefined && <p>City not found...</p>}
-        </div>
+      <div className="weather__info">
+        {this.props.city && <p className="weather__key">The city is:
+        <span className="weather__value"> {this.props.city}</span></p>}
+        {this.props.temp && <p className="weather__key">The temperature is:
+        <span className="weather__value"> {this.props.temp} Celsius</span></p>}
+        {this.props.conditions && this.props.icon && <p className="weather__key">The conditions are:
+        <span className="weather__value"> {this.props.conditions}</span>
+          <img src={'http://openweathermap.org/img/w/' + this.props.icon + '.png'} alt="" height="58" width="58" /></p>}
+        {this.props.city === undefined && <p className="weather__error">City not found..</p>}
+      </div>
     );
   }
 }
