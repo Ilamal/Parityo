@@ -38,7 +38,7 @@ class App extends React.Component {
   }
   callApi = async (e) => {
     e.preventDefault();
-    wholeurl = baseUrl + '?q=' + e.target.elements.city.value + ',fi' + unit + appid;
+    wholeurl = baseUrl + '?q=' + e.target.elements.city.value.replace(",", "") + ',fi' + unit + appid;
 
     let apiCall = await fetch(wholeurl);
     let data = await apiCall.json();
