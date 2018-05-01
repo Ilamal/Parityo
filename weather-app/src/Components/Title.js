@@ -4,7 +4,10 @@ export default class Title extends Component {
 
   render() {
     return (
-        <h1>Weather-app for Finnish cities!</h1>
+      <div>
+        < h1 className="title-container__title"> Weather app</h1 >
+        <h3 className="title-container__subtitle"> Finnish cities</h3>
+      </div>
     );
   }
 }
