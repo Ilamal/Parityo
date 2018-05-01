@@ -6,7 +6,7 @@ import Form from "./Components/Form";
 
 let baseUrl = "http://api.openweathermap.org/data/2.5/weather";
 let kaupunki = "Kuopio";
-let unit = "&units=metric";
+const unit = "&units=metric";
 const appid = "&appid=2f8b3222fce8d6f1b7fd7dff59724227";
 let wholeurl = baseUrl + "?q=" + kaupunki + ",fi" + unit + appid;
 
