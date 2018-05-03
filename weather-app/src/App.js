@@ -22,6 +22,7 @@ class App extends React.Component {
     };
     this.callApiFirst();
   }
+  //Is only called once
   callApiFirst = async () => {
     let apiCall = await fetch(wholeurl);
     let data = await apiCall.json();
@@ -54,6 +55,7 @@ class App extends React.Component {
         icon: data.weather[0].icon
       });
     } catch (ex) {
+      //Api call was not succesful
       this.setState({
         city: undefined,
         temp: undefined,
