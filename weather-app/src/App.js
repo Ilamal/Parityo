@@ -4,7 +4,8 @@ import Title from "./Components/Title";
 import Weather from "./Components/Weather";
 import Form from "./Components/Form";
 
-let baseUrl = "http://api.openweathermap.org/data/2.5/weather";
+let baseUrl =
+  "https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather";
 let kaupunki = "Kuopio";
 const unit = "&units=metric";
 const appid = "&appid=2f8b3222fce8d6f1b7fd7dff59724227";
