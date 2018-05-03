@@ -1,6 +1,4 @@
-# Project Title
-
-Parityö (weather-app)
+# Parityö (weather-app)
 
 ## Getting Started
 
