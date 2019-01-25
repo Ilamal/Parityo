@@ -1,4 +1,4 @@
-# Parityö (weather-app)
+# Weather-app with React
 
 ## Getting Started
 
@@ -62,4 +62,4 @@ npm run deploy
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License
